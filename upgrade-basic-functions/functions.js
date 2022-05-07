@@ -14,24 +14,27 @@ function sum(numberOne, numberTwo) {
   console.log(sum(10,12));
 
 
-/* **Iteración #2: Buscar la palabra más larga**
+/* **Iteración #2: Buscar la palabra más larga** (FAIL, SOLO PINTO EL PRIMERO)
 
 Completa la función que tomando un array de strings como argumento devuelva el más largo, en caso de que dos strings tenga la misma longitud deberá devolver el primero.
 
 Puedes usar este array para probar tu función: */ 
 
 const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];
+
 function findLongestWord(avengers) {
     let masLargo = []; 
 
     for (const avenger of avengers){
-        if () {
+        if (avenger.length > masLargo.length) {
          masLargo.push(avenger)   
         }
+        return masLargo // Nota: me faltaba el return 
     }
 }
 
-console.log(masLargo);
+console.log(findLongestWord(avengers));
+
 
 
 
@@ -57,11 +60,11 @@ console.log(suma);
 // Con una función 
 const numbers = [1, 2, 3, 5, 45, 37, 58];
 
-function sumAll(array) {
+function sumAll(a) {
     let suma = 0; 
 
-    for (const iteracion of numbers) {
-        suma += iteracion;
+    for (const number of numbers) {
+        suma += number;
     }
   return suma
 }
@@ -69,36 +72,62 @@ function sumAll(array) {
 console.log(suma); 
 
 
+// Llamando a la función 
+
+const numbers = [1, 2, 3, 5, 45, 37, 58];
+
+function sumAll(a) {
+    let suma = 0; 
+
+    for (const number of numbers) {
+        suma += number;
+    }
+  return suma
+}
+
+console.log(sumAll(numbers)); // le paso como parámetro el array numbers
+
+
+
 /* 
-**Iteración #4: Calcular el promedio** (FAIL)
+**Iteración #4: Calcular el promedio** 
 
 Calcular un promedio es una tarea extremadamente común. Puedes usar este array para probar tu función: */
 
 
-const numbers = [12, 21, 38, 5, 45, 37, 6];
+// CON REDUCE 
 
-let suma1 = numbers.reduce(function(acumulador, numeroActual)){
+const numbers2 = [12, 21, 38, 5, 45, 37, 6];
+
+let sumaP = numbers2.reduce(function(acumulador, numeroActual){
     return acumulador += numeroActual 
-}; 
+}); 
     
-// console.log(suma1);
+console.log(sumaP);
 
-let promedio = suma1 / numbers.length; 
+let promedio = sumaP / numbers2.length; 
 console.log(promedio);
 
 
-/* FAIL 
-const numbers = [12, 21, 38, 5, 45, 37, 6];
 
-function average(arr) {
-  let resultado = 0;
-  for (const number of numbers){
-      resultado = resultado + arr;
-  } 
-  return resultado;
+// CON FUNCIÓN Y BUCLE  (FALLA ALGO)
 
+const numbersA = [12, 21, 38, 5, 45, 37, 6];
+
+function sumAllP(a){
+    let sumPa = 0; 
+
+    for (const number of numbersA){
+        sumPa += number;
+    }
+    let promedioDeSum = sumPA / numbersA.length;
+    return promedioDeSum; 
 }
-console.log(resultado); */ 
+
+// console.log(sumPa);
+
+console.log(sumAllP(numbersA))
+
 
 
 
@@ -128,6 +157,8 @@ averageWord(mixedElements);
 
 /* Iteración 6. Eliminar elementos duplicados (FAIL) */ 
 
+/* FUNCIÓN Y FOR OF (DUDA: No "i is not defined")
+
 const duplicates = [
     'sushi',
     'pizza',
@@ -144,16 +175,42 @@ const duplicates = [
   function removeDuplicates(array) {
     let nuevoDuplicados = []; 
 
-    for (const name of duplicates){
-        if (name.includes(duplicates[i])); 
-            console.log("Se repite");
-    } else {
-        nuevoDuplicados.push(name); // ¿? 
+    for (const namePlate of duplicates){
+        if (!nuevoDuplicados.includes(duplicates[i]));
+        nuevoDuplicados.push(duplicates[i]); 
+    } 
+         
+    }
+console.log(removeDuplicates(duplicates)) */
+
+
+// FUNCIÓN Y FOR 
+
+const duplicates = [
+    'sushi',
+    'pizza',
+    'burger',
+    'potatoe',
+    'pasta',
+    'ice-cream',
+    'pizza',
+    'chicken',
+    'onion rings',
+    'pasta',
+    'soda'
+  ];
+  function removeDuplicates(array) {
+    let nuevoDuplicados = []; 
+
+    for (let i = 0; i < duplicates.length; i++) {
+        if (!nuevoDuplicados.includes(duplicates[i]));
+            nuevoDuplicados.push(duplicates[i]); 
+    } 
+    return nuevoDuplicados;
+         
     }
 
-}
-
-removeDuplicates();
+console.log(removeDuplicates(duplicates));
 
 
 // Con SET 
@@ -177,8 +234,81 @@ const duplicates = [
   console.log(sinDuplicar);
 
 
+/*
+  **Iteración #7: Buscador de nombres**
+
+  Crea una función que reciba por parámetro un array y el valor que desea comprobar que existe dentro de dicho array - comprueba si existe el elemento, en caso que existan nos devuelve un true y la posición de dicho elemento y por la contra un false. Puedes usar este array para probar tu función:
+ */ 
+
+  const nameFinder = [
+    'Peter',
+    'Steve',
+    'Tony',
+    'Natasha',
+    'Clint',
+    'Logan',
+    'Xabier',
+    'Bruce',
+    'Peggy',
+    'Jessica',
+    'Marc'
+  ];
+
+  function searchName(names, value) {
+
+      for (const name of names) {
+
+          if (name === value) {
+          return ["Su posición es " + names.indexOf(name) + " y su valor es " + true];
+          } // Si el nombre (name) que encuentra en el bucle es igual que el valor que le pasas en la función daría true
+          // con indexOf saco la posición
+          
+      }
+    
+  }
+
+  console.log(searchName(nameFinder, "Bruce"))
+
+ 
+/*
+  **Iteration #8: Contador de repeticiones**
+
+  Crea una función que nos devuelva el número de veces que se repite cada una de las palabras que lo conforma.  Puedes usar este array para probar tu función:
+*/
+
+const counterWords = [
+    'code',
+    'repeat',
+    'eat',
+    'sleep',
+    'code',
+    'enjoy',
+    'sleep',
+    'code',
+    'enjoy',
+    'upgrade',
+    'code'
+  ];
+
+  function repeatCounter(words, word) {
+      let repeat = 0; 
+
+      for (const w of words) {
+          // ¿? 
+      }
+  }
 
 
+
+
+
+
+
+
+
+
+
+ /*  
  // EJERCICIOS EN CLASE FUNCIONES 4 MAYO 2022
   
 
@@ -207,3 +337,5 @@ const duplicates = [
   sayHello(Paula);
 
   -- 
+
+  */ 
